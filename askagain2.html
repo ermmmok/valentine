@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ask again 2</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .question {
+      font-size: 4.5rem;
+      margin-bottom: 40px;
+    }
+
+    .pink {
+      color: hotpink;
+      font-size: 1.1em;
+      margin-left: 0.25em;
+      display: inline-block;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    .buttons {
+      position: relative;
+      display: flex;
+      gap: 40px;
+    }
+
+    button {
+      font-size: 2rem;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background-color: hotpink;
+      color: white;
+      box-shadow: 0 0 20px hotpink;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 15px hotpink; }
+      to { box-shadow: 0 0 35px hotpink; }
+    }
+
+    .no {
+      background-color: #444;
+      color: white;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="question">
+     <span class="pink">PLEASEEE🥺🥺</span>
+  </div>
+
+  <div class="buttons">
+    <button class="yes" onclick="yesClicked()">YES</button>
+    <button class="no" id="noBtn" onclick="noClicked()">NO</button>
+  </div>
+
+  <script>
+    function yesClicked() {
+      window.location.href = "yes.html";
+    }
+      function noClicked() {
+      window.location.href = "askagain3.html";
+    }
+
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseenter", () => {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * 300;
+      const y = Math.random() * 300;
+
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+
+</body>
+</html>

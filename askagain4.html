@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Again</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .page {
+    display: none;
+    font-size: 4.5rem;
+    transition: opacity 1s ease; /* smooth fade */
+    z-index: 2;
+  }
+  .page.active {
+    opacity: 1;
+    display: block;
+  }
+
+  .pink {
+    color: hotpink;
+    animation: pulse 1.8s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+  }
+
+  button {
+    font-size: 2rem;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+  }
+
+  .yes {
+    background-color: hotpink;
+    color: white;
+    box-shadow: 0 0 20px hotpink;
+  }
+
+  .no {
+    background-color: #444;
+    color: white;
+  }
+  .pic {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }  
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .ex {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ONLY first page has "active" -->
+<div class="page active pink">come on...</div>
+<div class="page">
+  <div class="content">
+    say yessss
+    <img src="source/game.jpg" class="pic">
+  </div>
+</div>
+<div class="page">
+  <div class="content"> 
+    i'll bake for you
+    <img src="source/cookie.png" class="pic">
+    </div>
+</div>
+<div class="page">
+  <div class="content"> 
+    i'll buy your favourite snacks
+    <div class="ex">
+      <img src="source/kb.png" class="pic" style="width: 100%;">
+      <img src="source/apollo.jpg" class="pic">
+      <img src="source/royce.jpg" class="pic">
+    </div>
+    
+  </div>
+</div>
+<div class="page">
+  <div class="content">
+    i'll play the guitar for you
+    <img src="source/guitar.jpg" class="pic">
+  </div>
+</div>
+<div class="page pink">
+  <div class="content"> 
+    pleaseeee
+    <img src="source/stitch.jpg" class="pic">
+  </div>
+</div>
+<div class="page pink">
+  <div class="content">
+    stitch beg
+    <img src="source/stitchbeg.jpg" class="pic">
+  </div>
+</div>
+
+
+<div class="buttons">
+  <button class="yes" onclick="yesClicked()">YES</button>
+  <button class="no" onclick="noClicked()">NO</button>
+</div>
+
+<script>
+  const pages = document.querySelectorAll(".page");
+  let currentPage = 0;
+
+  function noClicked() {
+    pages[currentPage].classList.remove("active");
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+    }
+    pages[currentPage].classList.add("active");
+  }
+
+  function yesClicked() {
+    window.location.href = "yes.html";
+  }
+</script>
+
+</body>
+</html>

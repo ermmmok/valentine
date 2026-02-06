@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Page</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      color: white;
+      font-size: 5rem;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    .hidden {
+      display: none;
+    }
+    .pic {
+      width: 300px;
+      height: auto;
+      border-radius: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="page1" class="page">HEY GORGEOUS!
+    <img src="source/Little Shark Sticker.jpg" class="pic">
+  </div>
+  <div id="page2" class="page hidden">you must be wondering what this is all about...</div>
+  <div id="page3" class="page hidden">I think that you're cute</div>
+  <div id="page4" class="page hidden">I'd like to know you better</div>
+  <div id="page5" class="page hidden">
+    and I'd love to take you out sometime
+    <img src="source/shy.gif" class="pic">
+  </div> 
+  <div id="page6" class="page hidden">so i want to ask you...</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 6;
+
+function goNext() {
+  if (currentPage < totalPages) {
+    document.getElementById(`page${currentPage}`).classList.add('hidden');
+    currentPage++;
+    document.getElementById(`page${currentPage}`).classList.remove('hidden');
+  }  
+  else {
+    window.location.href = 'next.html';
+  }
+}
+document.body.addEventListener("click", goNext);
+</script>
+</body>
+</html>
