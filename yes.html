@@ -33,7 +33,7 @@
   }
 
   .countdown {
-    font-size: 0.5rem;
+    font-size: 1rem;
     margin-top: 20px;
     color: white;
   }
@@ -44,7 +44,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 15px 40px;
-    font-size: 0.5rem;
+    font-size: 1rem;
     background: hotpink;
     border: none;
     border-radius: 12px;
@@ -204,7 +204,7 @@ class Firework {
 
   update() {
     if (!this.exploded) {
-      this.y -= 4 + Math.random() ; // rocket speed
+      this.y -= 3 + Math.random() ;
       if (this.y <= this.targetY) {
         this.explode();
       }
@@ -216,17 +216,17 @@ class Firework {
 
   explode() {
     this.exploded = true;
-    const count = Math.random() * 60 + 80;
-    const heartExplosion = Math.random() < 0.4; // 40% hearts 💗
+    const count = Math.random() * 40 + 60;
+    const heartExplosion = Math.random() < 0.6;
 
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 5 + 2;
-      const size = Math.random() * 3 + 2;
+      const speed = Math.random() * 3.5 + 1.5;
+      const size = Math.random() * 2 + 1;
 
       if (heartExplosion) {
         this.particles.push(
-          new HeartParticle(this.x, this.y, this.color, speed, angle, size + 2)
+          new HeartParticle(this.x, this.y, this.color, speed, angle, size + 1)
         );
       } else {
         this.particles.push(
@@ -235,7 +235,6 @@ class Firework {
       }
     }
   }
-
 
   draw() {
     if (!this.exploded) {
@@ -255,12 +254,10 @@ class Firework {
 
 const fireworks = [];
 
-// AUTO FIREWORKS
 setInterval(() => {
   fireworks.push(new Firework());
 }, 600);
 
-// CLICK FIREWORKS
 canvas.addEventListener("click", e => {
   const fw = new Firework();
   fw.x = e.clientX;
